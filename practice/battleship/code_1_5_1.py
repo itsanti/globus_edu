@@ -45,8 +45,9 @@ def fill_board(board, cells):
     for cell in cells:
         for row in (-1, 0, 1):
             for c in (-1, 0, 1):
-                if 0 <= cell[0] + row < len(board) and 0 <= cell[1] + c < len(board[0]):
-                    board[cell[0] + row][cell[1] + c] = 1
+                if row * c == 0:
+                    if 0 <= cell[0] + row < len(board) and 0 <= cell[1] + c < len(board[0]):
+                        board[cell[0] + row][cell[1] + c] = 1
     return board
 
 
