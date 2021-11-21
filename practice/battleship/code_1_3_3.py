@@ -51,8 +51,9 @@ def fill_board(board, cells):
     for cell in cells:
         for row in (-1, 0, 1):
             for c in (-1, 0, 1):
-                if 0 <= cell[0] + row < len(board) and 0 <= cell[1] + c < len(board[0]):
-                    board[cell[0] + row][cell[1] + c] = 1
+                if row * c == 0:
+                    if 0 <= cell[0] + row < len(board) and 0 <= cell[1] + c < len(board[0]):
+                        board[cell[0] + row][cell[1] + c] = 1
     return board
 
 
@@ -60,6 +61,7 @@ def select_random_cell(board, part_cell=None):
     if part_cell is None:
         row = random.randrange(len(board))
         cell = random.randrange(len(board[0]))
+        print(board)
         while board[row][cell] is not None:
             row = random.randrange(len(board))
             cell = random.randrange(len(board[0]))
@@ -82,5 +84,5 @@ def select_random_cell(board, part_cell=None):
 
 if __name__ == '__main__':
     print(start_boats_position((3, 1)))
-    #start_boats_position((3, 0))
+    #print(start_boats_position((3, 0)))
 
